@@ -43,9 +43,18 @@ const pagination = () => {
     // <p class="count"></p> の中身を書き換え
     const count = (page, step) => {
         const p = document.querySelector('.count');
+
         // 全ページ数 menuリストの総数/ステップ数の余りの有無で場合分け
         const total = (menu.length % step == 0) ? (menu.length / step) : (Math.floor(menu.length / step) + 1);
         p.innerText = page + "/" + total + "ページ";
+
+        //現在のページをハイライト
+        const currentPage = document.querySelector(".pagination").children[page];
+        const previousPage = document.querySelector(".pagination").children[page - 1];
+        const nextPage = document.querySelector(".pagination").children[page + 1];
+        currentPage.style.color = "red";
+        previousPage.style.color = "black";
+        nextPage.style.color = "black";
     }
 
     // ページを表示
