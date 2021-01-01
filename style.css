@@ -1,0 +1,14 @@
+.menu_list {
+    height: 150px;
+}
+
+.pagination {
+    list-style: none;
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 0 0.5em;
+    cursor: pointer;
+}
+
