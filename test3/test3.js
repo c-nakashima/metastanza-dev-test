@@ -126,9 +126,16 @@
 
                     for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJson.length; i++) {
                         var tr = document.createElement("tr");
-                        var td = document.createElement("td");
-                        td.innerHTML = objJson[i].id.value;
-                        tr.appendChild(td);
+                        for(var j = 0; j< 5; j++){
+                            var td = document.createElement("td");
+                            // console.log(Object.keys(objJson[i]));
+                            // var tdKey = Object.keys(objJson[i]);
+                            var tdValue = Object.values(objJson[i]);
+                            td.innerHTML = tdValue[j].value;
+                            // console.log(tdKey[j]);
+                            console.log(tdValue[j].value);
+                            tr.appendChild(td);
+                        }
                         tbody.appendChild(tr);
 
                         // tbody.innerHTML += "<tr class=><tr>" ;
