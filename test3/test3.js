@@ -124,6 +124,8 @@
                     listingTable.innerHTML += "<tbody id='tbodyID'></tbody>";
                     const tbody = document.getElementById('tbodyID');
 
+                    tbody.innerHTML = "";
+
                     for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJson.length; i++) {
                         var tr = document.createElement("tr");
                         for(var j = 0; j< 5; j++){
@@ -136,11 +138,11 @@
                             console.log(tdValue[j].value);
                             tr.appendChild(td);
                         }
-                        tbody.appendChild(tr);
-
+                        
                         // tbody.innerHTML += "<tr class=><tr>" ;
                         // const 
                         // listingTable.innerHTML += "<div class='objectBlock'>" + objJson[i].id.value + "</div>";
+                        tbody.appendChild(tr);
                     }
                     checkButtonOpacity();
                     selectedPage();
