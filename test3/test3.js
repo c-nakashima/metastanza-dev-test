@@ -20,6 +20,8 @@
             function Pagination() {
                 const prevButton = document.getElementById('button_prev');
                 const nextButton = document.getElementById('button_next');
+                const firstButton = document.getElementById('button_first');
+                const lastButton = document.getElementById('button_last');
                 const clickPageNumber = document.querySelectorAll('.clickPageNumber');
 
                 let current_page = 1;
@@ -36,6 +38,8 @@
                 let addEventListeners = function () {
                     prevButton.addEventListener('click', prevPage);
                     nextButton.addEventListener('click', nextPage);
+                    firstButton.addEventListener('click', firstPage);
+                    lastButton.addEventListener('click', lastPage);
                 }
 
                 let selectedPage = function () {
@@ -109,6 +113,20 @@
                 let nextPage = function () {
                     if (current_page < numPages()) {
                         current_page++;
+                        changePage(current_page);
+                    }
+                }
+
+                let firstPage = function () {
+                    if (current_page != 1) {
+                        current_page = 1;
+                        changePage(current_page);
+                    }
+                }
+
+                let lastPage = function () {
+                    if (current_page != numPages()) {
+                        current_page = numPages();
                         changePage(current_page);
                     }
                 }
