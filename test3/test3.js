@@ -26,6 +26,7 @@
 
                 let current_page = 1;
                 let records_per_page = 5;
+                let total_records = objJson.length;
 
                 this.init = function () {
                     changePage(1);
@@ -33,6 +34,7 @@
                     selectedPage();
                     clickPage();
                     addEventListeners();
+                    // showingRecordsNumber(current_page);
                 }
 
                 let addEventListeners = function () {
@@ -59,14 +61,35 @@
                     current_page == numPages() ? nextButton.classList.add('opacity') : nextButton.classList.remove('opacity');
                 }
 
+                let showingRecordsNumber = function (page){
+                    // if (page < 1) {
+                    //     page = 1;
+                    // }
+                    // if (page > (numPages() - 1)) {
+                    //     page = numPages();
+                    // }
+
+                    const showing_records_number = document.getElementById("showing_records_number");
+
+                    let firstrecord_per_page = ((page - 1) * records_per_page) + 1;
+                    let lastrecord_per_page = page * records_per_page;
+
+                    if(total_records == records_per_page * numPages()){
+                        lastrecord_per_page = page * records_per_page;
+                    } else {
+                        lastrecord_per_page = ((page - 1) * records_per_page) + (total_records % records_per_page);
+                    }
+                    showing_records_number.innerHTML = "<p>Showing" + firstrecord_per_page + "to" + lastrecord_per_page + "of" + total_records + "entres</p>";
+                }
+
                 let changePage = function (page) {
                     
-                    if (page < 1) {
-                        page = 1;
-                    }
-                    if (page > (numPages() - 1)) {
-                        page = numPages();
-                    }
+                    // if (page < 1) {
+                    //     page = 1;
+                    // }
+                    // if (page > (numPages() - 1)) {
+                    //     page = numPages();
+                    // }
 
                     var tableKey = Object.keys(objJson[0]); //th・tdに格納されるデータのキーを配列で取得してtableKeyに代入
                     var columns_per_row = tableKey.length; //tableKeyで取得したキーの配列の数（＝列の数）を取得してcolumns_per_rowに代入
@@ -101,6 +124,7 @@
                     }
                     checkButtonOpacity();
                     selectedPage();
+                    showingRecordsNumber(current_page);
                 }
 
                 let prevPage = function () {
