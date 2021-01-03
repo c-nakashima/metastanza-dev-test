@@ -98,10 +98,10 @@
                     const thead = document.getElementById('theadID');
                     thead.innerHTML = "";
                     thead.innerHTML = "<tr id='theadRowID'></tr>";
-
+                        //▽trおよびthの描画
                     for(var j = 0; j< columns_per_row; j++){
                         var th = document.createElement("th");
-                        th.innerHTML = tableKey[j];
+                        th.innerHTML = tableKey[j] + "<span class='icon filtericon'></span><span class='icon sorticon'></span>";
                         var tr = document.getElementById('theadRowID');
                         tr.appendChild(th);            
                     }
@@ -110,6 +110,7 @@
                     const tbody = document.getElementById('tbodyID');
                     tbody.innerHTML = "";
 
+                    //▽trおよびtdの描画
                     for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJson.length; i++) {
                         var tr = document.createElement("tr");
                         //それぞれのtrごとにtdを追加し、そのtdに対応する列のデータを格納する

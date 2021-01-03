@@ -2,36 +2,140 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden;
-  font-family: Arial;
-  background-color: #888;
+  // box-sizing: border-box;
+  overflow-x: scroll;
+  font-family: "Helvetica", sans-serif;
+  font-size: 12px;
+  color: #707070;
+  background-color: #eeeeee;
   .pagination {
-    max-width: 400px;
-    min-width: 300px;
+    max-width: 800px;
+    min-width: 400px;
     width: 100%;
+    overflow: scroll;
     display: block;
-    margin: 0 auto;
-    position: relative;
-    background-color: lightgreen;
+    margin: 100px auto;
+    background-color: #ffffff;
     padding: 20px;
   }
+  // 検索窓・DLボタン(information)のスタイル
+  .pagination .information{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 14px 8px 0;
+    .search-form{
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .search-box{
+      margin-right: 5px;
+      height: 18px;
+      width: 162px;
+      border: 1px solid #adc1c7;
+      border-radius: 2px;
+      font-size: 10px;
+      color: #c1c0c0;
+    }
+    ::placeholder{
+      color: #eaeaea;
+      padding-left: 5px;
+      justify-content: center;
+    }
+    .search-btn{
+      margin-right: 2px;
+      height: 22px;
+      width: 22px;
+      border: 1px solid #adc1c7;
+      border-radius: 3px;
+      background-color: #adc1c7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{
+        width: 12px;
+        height: 12px;
+        display: block;
+      }
+    }
+    .dl-btn{
+      img{
+        width: 13px;
+        height: 13px;
+        position: relative;
+        top: 8px;
+      }
+    }
+  }
+  // 表のスタイル
   .pagination .tableList {
       min-height: 250px;
-      text-indent: 20px;
-  }
-  .tableList .objectBlock {
-      position: relative;
-      background-color: black;
-      color: white;
-      padding: 10px;
-      margin-bottom: 10px;
-  }
-  .pageButton {
-      border: 1px solid black;
-      padding: 5px;
-  }
-  .clickPageNumber {
-      background-color: lightgrey;
+      border-collapse: collapse;
+      // border: 1px solid #ccb9b1;
+      border: 1px solid #adc1c7;
+      border-radius: 2px;
+      display: inline-block;
+      thead{
+        background-color: #efeeed;
+        color: #adc1c7;
+      }
+      tr{
+        height: 38px;
+      }
+      th{
+        font-weight: 400;
+        padding-right: 10px;
+        padding-left: 10px;
+        text-align: left;
+      }
+      .icon{
+        cursor: pointer;
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 13px;
+        background-repeat: no-repeat;
+        background-position: center 5px;
+        background-size: 8px 8px;
+      }
+      .filtericon{
+        background-image: url(./assets/grey-filter2.svg);
+        margin-left: 3px;
+      }
+      .sorticon{
+        background-image: url(./assets/grey-sort2.svg);
+      }
+      .sorticon-des{
+        background-image: url(./assets/grey-sort2-des.svg);
+      }
+      .sorticon-asc{
+        background-image: url(./assets/grey-sort2-asc.svg);
+      }
+      tbody
+      tr{
+        border-bottom: 0.5px solid #eeeeee;
+      }
+      :last-child{
+        border-bottom: none;
+      }
+      //thead・tbodyに共通したtr・tdのスタイル
+      tr{
+        max-height: 80px;
+        min-height: 64px;
+      }
+      td{
+        max-width: 120px;
+        min-width: 80px;
+        padding: 8px 10px;
+        overflow: hidden;
+      }
+    }
+      //ページング箇所のスタイル
+      .pageButton {
+        padding: 5px;
+      }
+      .clickPageNumber {
       padding: 5px;
       margin-left: 2px;
       margin-right: 2px;
@@ -44,8 +148,7 @@ body {
     display: inline-block;
   }
   .pagination-block .pageButton {
-    background-color: grey;
-    color: white;
+    color: #adc1c7;
   }
   .pagination-block span:hover {
     cursor: pointer;
