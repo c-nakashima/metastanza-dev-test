@@ -13,7 +13,6 @@
             // responce.json()で受け取った中身を確認
             // 実際にはここでdataの中身を利用して様々な処理をする
             let dataHead = data.head;
-            console.log(dataHead);
             let dataBody = data.body;
 
 
@@ -22,7 +21,12 @@
                 const nextButton = document.getElementById('button_next');
                 const firstButton = document.getElementById('button_first');
                 const lastButton = document.getElementById('button_last');
-                // const sortButton = document.getElementById('button_sort');
+                // setTimeout(
+                //     function(){
+                //         const sortButton = document.getElementById('button_sort');
+                //         console.log(sortButton);
+                //     }, 100
+                // );
                 const clickPageNumber = document.querySelectorAll('.clickPageNumber');
 
                 let current_page = 1;
@@ -44,6 +48,7 @@
                 let tableKey = Object.keys(dataBody[0]); //th・tdに格納されるデータのキーを配列で取得してtableKeyに代入
                 let columns_per_row = tableKey.length; //tableKeyで取得したキーの配列の数（＝列の数）を取得してcolumns_per_rowに代入
                 
+                
                 this.init = function () {
                     changePage(1);
                     pageNumbers();
@@ -52,12 +57,16 @@
                     addEventListeners();
                 }
                 
+                
+                
                 let addEventListeners = function () {
+                    const sortButton = document.getElementById('button_sort');
+                    console.log(sortButton);
                     prevButton.addEventListener('click', prevPage);
                     nextButton.addEventListener('click', nextPage);
                     firstButton.addEventListener('click', firstPage);
                     lastButton.addEventListener('click', lastPage);
-                    // sortButton.addEventListener('click', sortColumn);
+                    sortButton.addEventListener('click', sortColumn);
                 }
                 
 
@@ -101,7 +110,7 @@
                     }
 
                     //▼theadの描画
-                    const thead = document.getElementById('theadID');
+                    let thead = document.getElementById('theadID');
                     thead.innerHTML = "";
                     thead.innerHTML = "<tr id='theadRowID'></tr>";
                     //▽trおよびthの描画
@@ -117,6 +126,7 @@
                         th.innerHTML = label;
                         span_filter.classList.add("icon", "filtericon");
                         span_sort.setAttribute("data-type", dataHead.vars[i]);
+                        span_sort.setAttribute("id", "button_sort");
                         span_sort.classList.add("icon", "sorticon");
 
                         th.appendChild(span_filter);
@@ -125,7 +135,7 @@
                     }
 
                     //▼tbodyの描画
-                    const tbody = document.getElementById('tbodyID');
+                    let tbody = document.getElementById('tbodyID');
                     tbody.innerHTML = "";
                     
                     // //▽trおよびtdの描画
@@ -151,6 +161,70 @@
                     selectedPage();
                     showingRecordsNumber(current_page);
                 }
+                
+                let sortColumn = function (e){
+                    let page = current_page;
+                    console.log(page)
+                    // let span_sort = document.getElementsByClassName("sorticon");
+                    let tbody = document.getElementById('tbodyID');
+                    let span_sort = document.getElementById('button_sort');
+                    let offsetY = e.offsetY; // =>要素左上からのy座標
+                    if(offsetY >= 8){
+                        span_sort.className = "icon sorticon-asc";
+                        const key = e.path[0].getAttribute('data-type');
+                        const sortArray = dataBody.sort((a,b) => a[key].value.toLowerCase() < b[key].value.toLowerCase() ? -1 : 1);
+                        tbody.innerHTML = "";
+                        for(var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < sortArray.length; i++){
+                            let tr = document.createElement("tr");
+                            for(let j of order){
+                                let td = document.createElement("td");
+                                // let tdValue = Object.values(dataBody[i]);
+                                if (dataHead.href[j]) {
+                                    let a = document.createElement("a");
+                                    a.setAttribute("href", sortArray[i][dataHead.href[j]].value);
+                                    a.innerHTML = sortArray[i][dataHead.vars[j]].value;
+                                    td.appendChild(a);
+                                } else {
+                                    td.innerHTML = sortArray[i][dataHead.vars[j]].value;
+                                }
+                                tbody.appendChild(tr);
+                                tr.appendChild(td);
+                            }
+                        }
+                    } else {
+                        span_sort.className = "icon sorticon-des";
+                        const key = e.path[0].getAttribute('data-type');
+                        const sortArray = dataset.body.sort((a,b) => b[key].value.toLowerCase() < a[key].value.toLowerCase() ? -1 : 1);
+                        tbody.innerHTML = "";
+                        for(var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < sortArray.length; i++){
+                            let tr = document.createElement("tr");
+                            for(let j of order){
+                                let td = document.createElement("td");
+                                // let tdValue = Object.values(dataBody[i]);
+                                if (dataHead.href[j]) {
+                                    let a = document.createElement("a");
+                                    a.setAttribute("href", sortArray[i][dataHead.href[j]].value);
+                                    a.innerHTML = sortArray[i][dataHead.vars[j]].value;
+                                    td.appendChild(a);
+                                } else {
+                                    td.innerHTML = sortArray[i][dataHead.vars[j]].value;
+                                }
+                                tbody.appendChild(tr);
+                                tr.appendChild(td);
+                            }
+                        }
+                    }
+                    // for(var i = 0; i< columns_per_row; i++){
+                    //     // span_sort.setAttribute("data-type", dataHead.vars[i]);
+                    //     if(offsetY >= 8){
+                    //         span_sort.className = "icon sorticon-asc";
+                    //         const key = e.path[0].getAttribute('data-type');
+                    //         const sortArray = dataBody.sort((a,b) => a[key].value.toLowerCase() < b[key].value.toLowerCase() ? -1 : 1);
+                    //         tbody.innerHTML = "";
+                            
+                    //     }
+                    // }
+                }
 
                 let prevPage = function () {
                     if (current_page > 1) {
@@ -159,20 +233,6 @@
                     }
                 }
 
-                // let sortColumn = function (e){
-                //     let span_sort = document.getElementsByClassName("sorticon");
-                //     for(var i = 0; i< columns_per_row; i++){
-                //         span_sort.setAttribute("data-type", tableKey[i]);
-                //         let offsetY = e.offsetY; // =>要素左上からのy座標
-                //         if(offsetY >= 8){
-                //             span_sort.className = "icon sorticon-asc";
-                //             const key = e.path[0].getAttribute('data-type');
-                //             const sortArray = dataBody.sort((a,b) => a[key].value.toLowerCase() < b[key].value.toLowerCase() ? -1 : 1);
-                //             console.log(sortArray);
-                //             changePage(current_page);
-                //         }
-                //     }
-                // }
 
                 let nextPage = function () {
                     if (current_page < numPages()) {
