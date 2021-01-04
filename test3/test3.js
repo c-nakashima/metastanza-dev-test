@@ -21,12 +21,6 @@
                 const nextButton = document.getElementById('button_next');
                 const firstButton = document.getElementById('button_first');
                 const lastButton = document.getElementById('button_last');
-                // setTimeout(
-                //     function(){
-                //         const sortButton = document.getElementById('button_sort');
-                //         console.log(sortButton);
-                //     }, 100
-                // );
                 const clickPageNumber = document.querySelectorAll('.clickPageNumber');
 
                 let current_page = 1;
@@ -64,12 +58,13 @@
                     nextButton.addEventListener('click', nextPage);
                     firstButton.addEventListener('click', firstPage);
                     lastButton.addEventListener('click', lastPage);
-                    let sortButtons = document.getElementsByClassName('button_sort');
-                    for( var i=0,l=sortButtons.length; l>i; i++ ) {
-                        let sortButton = sortButtons[i] ;
-                        console.log(sortButton);
-                        sortButton.addEventListener('click', sortColumn);
-                    }
+                    // ここに書くと、ページ遷移した時にソート機能が引き継がれない（ため、changePage()関数内にソートのイベントリスナを記述）
+                    // let sortButtons = document.getElementsByClassName('button_sort');
+                    // for( var i=0,l=sortButtons.length; l>i; i++ ) {
+                    //     let sortButton = sortButtons[i] ;
+                    //     console.log(sortButton);
+                    //     sortButton.addEventListener('click', sortColumn);
+                    // }
                 }
                 
 
@@ -164,6 +159,12 @@
                     showingRecordsNumber(current_page);
                     // const sortButton = document.getElementsByClassName('button_sort');
                     // sortButton.addEventListener('click', sortColumn);
+                    let sortButtons = document.getElementsByClassName('button_sort');
+                    for( var i=0,l=sortButtons.length; l>i; i++ ) {
+                        let sortButton = sortButtons[i] ;
+                        console.log(sortButton);
+                        sortButton.addEventListener('click', sortColumn);
+                    }
                 }
                 
 
@@ -222,12 +223,20 @@
 
                 let sortColumn = function (e){
                     let page = current_page;
-                    // let span_sort = document.getElementsByClassName("sorticon");
                     let tbody = document.getElementById('tbodyID');
-                    let span_sort = document.getElementsByClassName('button_sort');
+                    // let span_sort = document.getElementsByClassName('button_sort');
+                    let span_sorts = document.querySelectorAll('.button_sort');
+                    let span_sort = e.path[0];
                     let offsetY = e.offsetY; // =>要素左上からのy座標
+                    // 他のカラムにおけるソートアイコンのクラスをリセット
+                    for( var i=0,l=span_sorts.length; l>i; i++ ) {
+                        let span_sort = span_sorts[i];
+                        span_sort.className = "icon sorticon button_sort";
+                    }
                     if(offsetY >= 8){
-                        span_sort.className = "icon sorticon-asc";
+                        // クリックしたカラムにおけるソートアイコンのクラスを適用
+                        span_sort.className = "icon sorticon-asc button_sort";
+
                         const key = e.path[0].getAttribute('data-type');
                         const sortArray = dataBody.sort((a,b) => a[key].value.toLowerCase() < b[key].value.toLowerCase() ? -1 : 1);
                         tbody.innerHTML = "";
@@ -249,7 +258,7 @@
                             }
                         }
                     } else {
-                        span_sort.className = "icon sorticon-des";
+                        span_sort.className = "icon sorticon-des button_sort";
                         const key = e.path[0].getAttribute('data-type');
                         const sortArray = dataBody.sort((a,b) => b[key].value.toLowerCase() < a[key].value.toLowerCase() ? -1 : 1);
                         tbody.innerHTML = "";
