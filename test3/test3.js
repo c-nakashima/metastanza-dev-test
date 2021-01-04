@@ -60,13 +60,16 @@
                 
                 
                 let addEventListeners = function () {
-                    const sortButton = document.getElementById('button_sort');
-                    console.log(sortButton);
                     prevButton.addEventListener('click', prevPage);
                     nextButton.addEventListener('click', nextPage);
                     firstButton.addEventListener('click', firstPage);
                     lastButton.addEventListener('click', lastPage);
-                    sortButton.addEventListener('click', sortColumn);
+                    let sortButtons = document.getElementsByClassName('button_sort');
+                    for( var i=0,l=sortButtons.length; l>i; i++ ) {
+                        let sortButton = sortButtons[i] ;
+                        console.log(sortButton);
+                        sortButton.addEventListener('click', sortColumn);
+                    }
                 }
                 
 
@@ -126,8 +129,7 @@
                         th.innerHTML = label;
                         span_filter.classList.add("icon", "filtericon");
                         span_sort.setAttribute("data-type", dataHead.vars[i]);
-                        span_sort.setAttribute("id", "button_sort");
-                        span_sort.classList.add("icon", "sorticon");
+                        span_sort.classList.add("icon", "sorticon", "button_sort");
 
                         th.appendChild(span_filter);
                         th.appendChild(span_sort);
@@ -160,14 +162,69 @@
                     checkButtonOpacity();
                     selectedPage();
                     showingRecordsNumber(current_page);
+                    // const sortButton = document.getElementsByClassName('button_sort');
+                    // sortButton.addEventListener('click', sortColumn);
                 }
                 
+
+                // //クリックしたらソートする（メモ）
+                // let span_sort = document.getElementsByClassName("button_sort");
+                // console.log(span_sort);
+                // span_sort.addEventListener('click',function(e){
+                //     let offsetY = e.offsetY;
+                //     if(offsetY >= 8){
+                //         span_sort.className = "icon sorticon-asc";
+                //         const key = e.path[0].getAttribute('data-type');
+                //         const sortArray = dataBody.sort((a,b) => a[key].value.toLowerCase() < b[key].value.toLowerCase() ? -1 : 1);
+                //         tbody.innerHTML = "";
+                //         for(var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < sortArray.length; i++){
+                //             let tr = document.createElement("tr");
+                //             for(let j of order){
+                //                 let td = document.createElement("td");
+                //                 // let tdValue = Object.values(dataBody[i]);
+                //                 if (dataHead.href[j]) {
+                //                     let a = document.createElement("a");
+                //                     a.setAttribute("href", sortArray[i][dataHead.href[j]].value);
+                //                     a.innerHTML = sortArray[i][dataHead.vars[j]].value;
+                //                     td.appendChild(a);
+                //                 } else {
+                //                     td.innerHTML = sortArray[i][dataHead.vars[j]].value;
+                //                 }
+                //                 tbody.appendChild(tr);
+                //                 tr.appendChild(td);
+                //             }
+                //         }
+                //     } else {
+                //         span_sort.className = "icon sorticon-des";
+                //         const key = e.path[0].getAttribute('data-type');
+                //         const sortArray = dataBody.sort((a,b) => b[key].value.toLowerCase() < a[key].value.toLowerCase() ? -1 : 1);
+                //         tbody.innerHTML = "";
+                //         for(var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < sortArray.length; i++){
+                //             let tr = document.createElement("tr");
+                //             for(let j of order){
+                //                 let td = document.createElement("td");
+                //                 // let tdValue = Object.values(dataBody[i]);
+                //                 if (dataHead.href[j]) {
+                //                     let a = document.createElement("a");
+                //                     a.setAttribute("href", sortArray[i][dataHead.href[j]].value);
+                //                     a.innerHTML = sortArray[i][dataHead.vars[j]].value;
+                //                     td.appendChild(a);
+                //                 } else {
+                //                     td.innerHTML = sortArray[i][dataHead.vars[j]].value;
+                //                 }
+                //                 tbody.appendChild(tr);
+                //                 tr.appendChild(td);
+                //             }
+                //         }
+                //     }
+                // })
+
+
                 let sortColumn = function (e){
                     let page = current_page;
-                    console.log(page)
                     // let span_sort = document.getElementsByClassName("sorticon");
                     let tbody = document.getElementById('tbodyID');
-                    let span_sort = document.getElementById('button_sort');
+                    let span_sort = document.getElementsByClassName('button_sort');
                     let offsetY = e.offsetY; // =>要素左上からのy座標
                     if(offsetY >= 8){
                         span_sort.className = "icon sorticon-asc";
@@ -188,13 +245,13 @@
                                     td.innerHTML = sortArray[i][dataHead.vars[j]].value;
                                 }
                                 tbody.appendChild(tr);
-                                tr.appendChild(td);
+                                tr.appendChild(td)
                             }
                         }
                     } else {
                         span_sort.className = "icon sorticon-des";
                         const key = e.path[0].getAttribute('data-type');
-                        const sortArray = dataset.body.sort((a,b) => b[key].value.toLowerCase() < a[key].value.toLowerCase() ? -1 : 1);
+                        const sortArray = dataBody.sort((a,b) => b[key].value.toLowerCase() < a[key].value.toLowerCase() ? -1 : 1);
                         tbody.innerHTML = "";
                         for(var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < sortArray.length; i++){
                             let tr = document.createElement("tr");
@@ -214,16 +271,6 @@
                             }
                         }
                     }
-                    // for(var i = 0; i< columns_per_row; i++){
-                    //     // span_sort.setAttribute("data-type", dataHead.vars[i]);
-                    //     if(offsetY >= 8){
-                    //         span_sort.className = "icon sorticon-asc";
-                    //         const key = e.path[0].getAttribute('data-type');
-                    //         const sortArray = dataBody.sort((a,b) => a[key].value.toLowerCase() < b[key].value.toLowerCase() ? -1 : 1);
-                    //         tbody.innerHTML = "";
-                            
-                    //     }
-                    // }
                 }
 
                 let prevPage = function () {
