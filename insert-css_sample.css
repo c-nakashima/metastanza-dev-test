@@ -1,0 +1,42 @@
+/* barchart */
+.role-scope > g > path.background{
+  fill: salmon;
+}
+
+/* hash-table */
+main > .container > dl{
+  color: salmon;
+  background-color: antiquewhite;
+}
+
+/* linechart, piechart, scatterplot */
+g.role-mark > path:nth-of-type(1){
+  stroke: salmon;
+  stroke-width: 5;
+}
+
+/* pagination-table */
+.wrapper > .tableWrapper > table > tbody > tr > td {
+  color: salmon;
+  background-color: antiquewhite;
+}
+
+/* scroll-table */
+table > tbody > tr > td{
+  background-color: antiquewhite;
+}
+
+/* scorecard */
+text > tspan#key{
+  fill: salmon;
+}
+
+/* text */
+.container > table > tbody > tr > td{
+  color: salmon;
+}
+
+/* tree */
+g.mark-symbol > path{
+  fill: salmon;
+}
