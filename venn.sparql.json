@@ -1,0 +1,92 @@
+{
+  "head": {
+    "link": [],
+    "vars": [
+      "orgs",
+      "count"
+    ]
+  },
+  "results": {
+    "distinct": false,
+    "ordered": true,
+    "bindings": [
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 7955, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "5568"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "591"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "183"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "7955"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "73"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "52"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "7955, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "20"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 7955"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "9"
+        }
+      }
+    ]
+  }
+}
