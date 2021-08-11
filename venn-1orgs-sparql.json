@@ -1,0 +1,26 @@
+{
+  "head": {
+    "link": [],
+    "vars": [
+      "orgs",
+      "count"
+    ]
+  },
+  "results": {
+    "distinct": false,
+    "ordered": true,
+    "bindings": [
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "9986"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "5840"
+        }
+      }
+    ]
+  }
+}

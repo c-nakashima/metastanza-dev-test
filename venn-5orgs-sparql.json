@@ -1,0 +1,290 @@
+{
+  "head": {
+    "link": [],
+    "vars": [
+      "orgs",
+      "count"
+    ]
+  },
+  "results": {
+    "distinct": false,
+    "ordered": true,
+    "bindings": [
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9595, 9598, 9601, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "6040"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "105"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9598, 9601, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "87"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "9595, 9598, 9601, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "69"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "51"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "14"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "9598, 9601, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "13"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9595, 9598, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "12"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "9598, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "6"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "9598"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "4"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "9601"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "4"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "9595, 9601, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "4"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9601, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "9601, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9601"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "9595, 9598, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9598, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9595, 9598, 9601"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9595, 9598"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9595"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9598, 9601"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "9598, 9601"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9598"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "10090, 9595, 9601, 9606"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      },
+      {
+        "orgs": {
+          "type": "literal",
+          "value": "9595, 9598, 9601"
+        },
+        "count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        }
+      }
+    ]
+  }
+}
